@@ -1,4 +1,4 @@
-import InitMacroImplementation
+import NotJustAnotherInitMacroImplementation
 
 /// Generates an initialiser.
 ///
@@ -34,4 +34,4 @@ public macro Init(
   accessLevel: InitMacro.AccessLevel = .public,
   defaultValues: [String: Any] = [:],
   exclude: [String] = []
-) = #externalMacro(module: "InitMacroImplementation", type: "InitMacro")
+) = #externalMacro(module: "NotJustAnotherInitMacroImplementation", type: "InitMacro")

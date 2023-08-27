@@ -1,4 +1,4 @@
-import InitMacro
+import NotJustAnotherInitMacro
 
 @Init(accessLevel: .internal, defaultValues: ["key2": true], exclude: ["key4"])
 public struct Test {

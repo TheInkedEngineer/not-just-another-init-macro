@@ -1,4 +1,4 @@
-# Not just another Init macro`
+# Not just another Init macro
 
 `Not just another Init macro` is a Swift macro to automatically generate an initialiser for a `struct` or `class`.
 It is supercharged with features to make it as flexible as possible.

@@ -2,7 +2,7 @@ import SwiftSyntaxMacros
 import SwiftSyntaxMacrosTestSupport
 import XCTest
 
-@testable import InitMacroImplementation
+@testable import NotJustAnotherInitMacroImplementation
 
 let macros: [String: Macro.Type] = [
   "Init": InitMacro.self
