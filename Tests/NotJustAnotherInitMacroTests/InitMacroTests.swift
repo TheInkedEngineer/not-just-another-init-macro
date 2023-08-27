@@ -36,6 +36,8 @@ final class InitMacroTests: XCTestCase {
       """
       @Init(accessLevel: .internal, exclude: ["key4"], defaultValues: ["key2": true])
       public struct Test {
+          static let shouldNotBeIncludedConstant = "value"
+          static var shouldNotBeIncludedVariable = "value"
           let key: String
           let key2: Bool
           let key3: Int
@@ -56,6 +58,8 @@ final class InitMacroTests: XCTestCase {
       """,
       expandedSource: """
       public struct Test {
+          static let shouldNotBeIncludedConstant = "value"
+          static var shouldNotBeIncludedVariable = "value"
           let key: String
           let key2: Bool
           let key3: Int

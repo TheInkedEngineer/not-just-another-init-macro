@@ -98,6 +98,11 @@ extension InitMacro {
 
           return
         }
+        
+        // Do not include static properties
+        if syntax.modifiers.as(DeclModifierListSyntax.self)?.contains(where: {$0.as(DeclModifierSyntax.self)?.name.text == "static"}) == true {
+          return
+        }
 
         if
           // Initialised constants should not be included.
