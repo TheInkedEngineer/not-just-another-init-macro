@@ -36,12 +36,11 @@ final class InitMacroTests: XCTestCase {
       """
       @Init(accessLevel: .internal, exclude: ["key4"], defaultValues: ["key2": true])
       public struct Test {
-          static let shouldNotBeIncludedConstant = "value"
-          static var shouldNotBeIncludedVariable = "value"
+          static var staticVariable = "something"
           let key: String
-          let key2: Bool
-          let key3: Int
-          var key4 = ["HI", "Bye"]
+          public let key2: Bool
+          private let key3: Int
+          internal var key4 = ["HI", "Bye"]
           var key5 = [3, "Int"] as [Any]
           var key6 = ["key": "value"]
           var key7 = ["key": "value", "anotherKey": 1] as [String: Any]
@@ -52,18 +51,18 @@ final class InitMacroTests: XCTestCase {
           var optionalKey2 = [3, nil]
           var optionalKey3 = ["key": nil] as [String: Any?]
           var optionalKey4 = [1: nil, 2: "value"]
-          var optionalKey5 = 3.0 as? Float
+          var optionalKey5 = 3.0 as Float
           var closure: (Int) -> ()
+          lazy var lazyVariable = 3
       }
       """,
       expandedSource: """
       public struct Test {
-          static let shouldNotBeIncludedConstant = "value"
-          static var shouldNotBeIncludedVariable = "value"
+          static var staticVariable = "something"
           let key: String
-          let key2: Bool
-          let key3: Int
-          var key4 = ["HI", "Bye"]
+          public let key2: Bool
+          private let key3: Int
+          internal var key4 = ["HI", "Bye"]
           var key5 = [3, "Int"] as [Any]
           var key6 = ["key": "value"]
           var key7 = ["key": "value", "anotherKey": 1] as [String: Any]
@@ -74,8 +73,9 @@ final class InitMacroTests: XCTestCase {
           var optionalKey2 = [3, nil]
           var optionalKey3 = ["key": nil] as [String: Any?]
           var optionalKey4 = [1: nil, 2: "value"]
-          var optionalKey5 = 3.0 as? Float
+          var optionalKey5 = 3.0 as Float
           var closure: (Int) -> ()
+          lazy var lazyVariable = 3
 
           internal init(
               key: String,
@@ -91,7 +91,7 @@ final class InitMacroTests: XCTestCase {
               optionalKey2: [Int?],
               optionalKey3: [String: Any?],
               optionalKey4: [Int: String?],
-              optionalKey5: Float?,
+              optionalKey5: Float,
               closure: @escaping (Int) -> ()
           ) {
               self.key = key
